@@ -2,7 +2,7 @@
 
 A local-first workspace for predictable, reviewable file organization.
 
-![Project visual](docs/assets/hero-system-v1.png)
+![jack-file-organizer project visual](assets/jack-file-organizer-hero.png)
 
 ## What it does
 
