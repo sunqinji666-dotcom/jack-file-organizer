@@ -4,6 +4,8 @@
 
 Contact: **Jacksun** · [qinji@jack-sun.com](mailto:qinji@jack-sun.com)
 
+![Jack File Organizer 主视觉：本地文件分类、命名建议与清晰工作流的概念示意。](docs/assets/hero-system-v1.png)
+
 ## 怎么用
 
 1. 打开 `index.html`
