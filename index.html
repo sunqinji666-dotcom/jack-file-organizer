@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jack 文件整理台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="backdrop"></div>
+    <main class="app-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Jack 专属文件整理工具</p>
+          <h1>先分门类，再谈效率。</h1>
+          <p class="lead">
+            读你的文件，也读你的风格。先按“客户交付 / 创作 / 知识库 / 素材 / 归档”分开，
+            再给每个文件一个像你会认同的名字。
+          </p>
+          <div class="hero-badges">
+            <span>离线优先</span>
+            <span>本地整理</span>
+            <span>人格驱动</span>
+          </div>
+        </div>
+
+        <aside class="persona-card">
+          <div class="card-head">
+            <p>内置人设</p>
+            <strong>Jack</strong>
+          </div>
+          <ul id="personaHighlights" class="persona-list"></ul>
+        </aside>
+      </header>
+
+      <section class="toolbar">
+        <label class="upload-zone" id="dropZone">
+          <input id="fileInput" type="file" multiple webkitdirectory />
+          <strong>拖进来，或者点这里选文件夹</strong>
+          <span>支持 txt / md / json / csv / 图片 / 视频等常见文件。文本类会顺手读内容做判断。</span>
+        </label>
+
+        <div class="controls">
+          <label class="field">
+            <span>搜索</span>
+            <input id="searchInput" type="search" placeholder="文件名、标签、关键词都可以" />
+          </label>
+
+          <label class="field">
+            <span>视图</span>
+            <select id="viewSelect">
+              <option value="all">全部</option>
+              <option value="priority">先看高优先级</option>
+              <option value="confident">高置信度</option>
+              <option value="uncertain">需要你拍板</option>
+            </select>
+          </label>
+
+          <button id="exportBtn" class="secondary" type="button" disabled>导出整理清单</button>
+          <button id="clearBtn" class="ghost" type="button" disabled>清空</button>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-live="polite">
+        <article>
+          <strong id="totalFiles">0</strong>
+          <span>个文件</span>
+        </article>
+        <article>
+          <strong id="textFiles">0</strong>
+          <span>个可读文本</span>
+        </article>
+        <article>
+          <strong id="highPriority">0</strong>
+          <span>个高优先级</span>
+        </article>
+        <article>
+          <strong id="needsReview">0</strong>
+          <span>个需要你拍板</span>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <div class="panel list-panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">整理结果</p>
+              <h2>文件队列</h2>
+            </div>
+            <span id="statusPill" class="pill">等待导入</span>
+          </div>
+          <div id="fileList" class="file-list empty-state">
+            先导入文件。工具会按你的习惯，优先把“要交付的”挑出来。
+          </div>
+        </div>
+
+        <aside class="panel detail-panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">单文件视图</p>
+              <h2>判断依据</h2>
+            </div>
+          </div>
+          <div id="detailEmpty" class="detail-empty">
+            选中左侧任意文件，看看它为什么会被放进这个目录。
+          </div>
+          <div id="detailView" class="detail-view hidden">
+            <div class="detail-title">
+              <strong id="detailName"></strong>
+              <span id="detailMeta"></span>
+            </div>
+            <div class="detail-section">
+              <span class="label">建议目录</span>
+              <p id="detailFolder"></p>
+            </div>
+            <div class="detail-section">
+              <span class="label">建议重命名</span>
+              <p id="detailRename"></p>
+            </div>
+            <div class="detail-section">
+              <span class="label">判断理由</span>
+              <p id="detailReason"></p>
+            </div>
+            <div class="detail-section">
+              <span class="label">标签</span>
+              <div id="detailTags" class="tag-row"></div>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <template id="fileCardTemplate">
+      <article class="file-card">
+        <button class="file-main" type="button">
+          <div class="file-topline">
+            <strong class="file-name"></strong>
+            <span class="confidence"></span>
+          </div>
+          <p class="file-subline"></p>
+          <div class="meta-row">
+            <span class="category-pill"></span>
+            <span class="folder-pill"></span>
+          </div>
+        </button>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
